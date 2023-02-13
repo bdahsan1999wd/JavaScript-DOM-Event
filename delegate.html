@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Delegate</title>
+</head>
+<body>
+
+    <h1>Explore Event Delegate</h1>
+
+    <!-- ------------------------------event delegation-1 number------------------------------ -->
+
+    <section>
+        
+        <!-- ul#list-container>li.item*6>lorem3 -->
+        <ul id="list-container">
+            <li class="item">Lorem, ipsum dolor.</li>
+            <li class="item">Facilis, repellendus ullam!</li>
+            <li class="item">Pariatur, quo beatae.</li>
+            <li class="item">Iure, accusamus explicabo!</li>
+            <li class="item">Reprehenderit, suscipit minus!</li>
+            <li class="item">Earum, dolores eius?</li>
+        </ul>
+
+        <button id="btn-add-item">Add Item</button>
+
+    </section>
+
+    <br>
+    
+    <!-- ---------------------------event delegation-2 number----------------------- -->
+    
+    <br>
+
+    <div id="button">
+        <!-- step 1 -->
+        <button class="buttonClass"> Click me</button>
+        <button class="buttonClass"> Click me</button>
+        <!-- buttons -->
+        <button class="buttonClass"> Click me</button>
+    </div>
+
+    <!-- --------------------------------js internal file------------------------------------ -->
+
+    <script>
+
+        /* ---------------------------event delegation-2 number----------------------- */
+
+        document.getElementById('button').addEventListener('click', event => {   /* step 2 */
+            if (event.target.className === 'buttonClass'){   /* step 3 */
+                console.log('click !!!');
+            }
+        });
+
+    /* ------------------------------event delegation-1 number------------------------------ */
+
+        const items = document.getElementsByClassName('item');
+        // console.log(items);
+        for(const item of items){
+            // console.log(item);
+            item.addEventListener('click', function(event){
+            // console.log(item);
+            // console.log(event.target.parentNode);
+                event.target.parentNode.removeChild(event.target);
+            })
+        }
+
+        document.getElementById('list-container').addEventListener('click', function(event){
+            // console.log(event.target);
+            event.target.parentNode.removeChild(event.target);
+        });
+
+        document.getElementById('btn-add-item').addEventListener('click', function(){
+            const listContainer = document.getElementById('list-container');
+            const li = document.createElement('li');
+            li.innerText = 'Brand New Item added';
+            li.classList.add('item');
+            listContainer.appendChild(li);
+        });
+
+
+
+    </script>
+
+</body>
+</html>
