@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS DOM EVENTS</title>
+</head>
+<body>
+
+    <h1 onclick="console.log('I am clicked')">DOM er ajke special events</h1>
+
+    <button title="This is a tooltip" onclick="console.log(7)">Click Me</button>
+
+    <button onclick="console.log(65)">Another button</button>
+
+    <br>
+
+    <!-- --------------------option 1-------------------- -->
+
+    <button onclick="document.body.style.backgroundColor = 'yellow'">Make Yellow</button>
+
+    <!-- --------------------option 2-------------------- -->
+
+    <!-- We will use this ---- important!!! -->
+    <button onclick="makeRed()">Make Red</button>
+
+    <!-- --------------------option 3-------------------- -->
+
+    <button id="make-blue">Make Blue</button>
+
+    <!-- --------------------option 3 another-------------------- -->
+
+    <button id="make-purple">Make Purple</button>
+
+    <!-- --------------------option 4-------------------- -->
+
+    <button id="make-pink">Make Pink</button>
+    <button id="make-green">Make Green</button>
+    <button id="make-goldenrod">Make goldenRod</button>
+
+    <!-- -------------------------internal js file------------------------- -->
+    <!-- 
+    
+    event handler add onclick function on the html element ----- option-2 !!!
+
+    <script>
+        function makeRed(){
+            document.body.style.backgroundColor = 'red';
+        }
+    </script>
+
+    ---------------------------------------- option-3
+
+    <script>
+        const makeBlueButton = document.getElementById('make-blue');
+        console.log(makeBlueButton);
+        makeBlueButton.onclick = makeBlue;
+    
+        function makeBlue(){
+        document.body.style.backgroundColor = 'blue';
+        }
+    <script>
+    
+    ---------------------------------------- option-4
+
+    <script>
+        const pinkButton = document.getElementById('make-pink');
+        // console.log(pinkButton);
+        pinkButton.addEventListener('click', makePink)
+        function makePink(){
+            document.body.style.backgroundColor = 'pink';
+        }
+    </script>
+
+    ---------------------------------------- option-4 Final !!!
+
+    <script>
+        document.getElementById('make-goldenrod').addEventListener('click', function() {
+            document.body.style.backgroundColor = 'goldenrod';
+        });
+    </script>
+
+    -->
+    
+    <!-- -------------------------external js file------------------------- -->
+
+    <script src="js/events.js"></script>
+
+</body>
+</html>
